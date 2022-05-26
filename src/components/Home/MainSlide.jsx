@@ -24,7 +24,7 @@ const MainSlide = () => {
     
 
     return (
-        <div className="container mx-auto relative pt-4">
+        <div className="lg:w-[90vw] xl:container mx-auto relative pt-4">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
