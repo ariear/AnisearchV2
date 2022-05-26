@@ -1,10 +1,18 @@
+import { NavLink } from "react-router-dom"
+import '../App.css'
+
 const Nav = () => {
+
+    window.addEventListener('scroll', () => {
+            document.querySelector('.nav').classList.toggle('nav-scroll', window.scrollY > 0)
+    })
+
     return (
-        <nav className="flex items-center justify-between text-white py-8 px-16">
+        <nav className="w-screen flex items-center justify-between text-white lg:px-5 xl:px-16 font-pupylinux fixed top-0 bg-[#091945] z-50 nav transition-all">
             <p className="font-medium text-3xl">AniSearchV2</p>
             <div className="flex items-center text-lg">
-                <p className="mr-9">Home</p>
-                <p className="mr-9">Search Anime</p>
+                <p className="mr-9"><NavLink to='/' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Home</NavLink></p>
+                <p className="mr-9"><NavLink to='/animesearch' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Search Anime</NavLink></p>
                 <p className="mr-9">About Me</p>
                 <p>Contact Me</p>
             </div>
