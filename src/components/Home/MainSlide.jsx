@@ -24,7 +24,7 @@ const MainSlide = () => {
     
 
     return (
-        <div className="lg:w-[90vw] xl:container mx-auto relative pt-4">
+        <div className="w-[95vw] lg:w-[90vw] xl:container mx-auto relative pt-4">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -44,8 +44,8 @@ const MainSlide = () => {
                 <SwiperSlide key={index}>
                     <div className="w-full rounded-xl py-32 bg-center relative" style={{ backgroundImage: `url("${e.entry.images.jpg.large_image_url}")` }}>
                         <div className="bg-[#0000007c] absolute left-0 top-0 w-full h-full text-white rounded-xl flex flex-col justify-end">
-                            <p className="font-medium text-xl ml-5 mb-2">The best anime in history</p>
-                            <p className="font-semibold text-3xl ml-5 mb-6">{ e.entry.title }</p>
+                            <p className="font-medium text-lg md:text-xl ml-5 mb-2">The best anime in history</p>
+                            <p className="font-semibold text-2xl md:text-3xl ml-5 mb-6">{ e.entry.title }</p>
                         </div>
                     </div>
                 </SwiperSlide>

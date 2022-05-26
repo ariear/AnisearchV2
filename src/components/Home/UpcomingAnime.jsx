@@ -18,14 +18,14 @@ const UpcomingAnime = () => {
     
 
     return (
-        <div className="bg-[#3955A3] grow rounded-xl ml-3">
+        <div className="bg-[#3955A3] grow rounded-xl lg:ml-3">
             <p className="text-white ml-4 mt-4 mb-6 text-lg">Top Upcoming Anime</p>
             {
                 data.map((e, index) =>                     
             <div className="flex ml-4 mb-3" key={index}>
                 <img src={e.images.webp.large_image_url} className="w-[120px] rounded-lg" alt="" />
                 <div className="text-white px-3">
-                    <p className="text-lg font-medium mb-1">{e.title}</p>
+                    <p className="md:text-lg lg:text-base xl:text-lg font-medium mb-1">{e.title}</p>
                     <p className="font-light">{e.type}, {e.members} members</p>
                 </div>
             </div>

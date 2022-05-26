@@ -6,11 +6,11 @@ import UpcomingAnime from "../components/Home/UpcomingAnime"
 
 const Home = () => {
     return (
-        <div className="font-pupylinux bg-[#091945] pt-24">
+        <div className="font-pupylinux bg-[#091945] pt-20 lg:pt-24">
             <MainSlide />
-            <div className="container mx-auto pt-9 mb-20">
-            <div className="flex">
-            <div className="w-[60vw]">
+            <div className="w-[95vw] xl:container mx-auto pt-9 mb-20">
+            <div className="flex lg:flex-row flex-col">
+            <div className="w-[95vw] lg:w-[60vw]">
             <SpringAnime />
             <LatestUpdateAnime />
             </div>
