@@ -6,3 +6,14 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+    .nav{
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+    .nav-scroll{
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+}

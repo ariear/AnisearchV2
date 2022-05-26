@@ -25,7 +25,7 @@ const SpringAnime = () => {
         <div className="mb-9">
             <p className="text-white font-medium text-xl mb-5">Spring 2022 Anime</p>
             <div className="flex items-center">
-            <img src="/asset/icon/left-arrow.png" onClick={() => slideLeft()} className="w-[35px] mr-2 cursor-pointer" alt="" />
+            <img src="/asset/icon/left-arrow.png" onClick={() => slideLeft()} className="w-[35px] mr-2 cursor-pointer md:block hidden" alt="" />
             <div id="slider" className="flex relative pb-4 pt-2 overflow-x-scroll scroll scroll-smooth scrollbar-hide">
                 {
                     data.map((e, index) =>
@@ -42,7 +42,7 @@ const SpringAnime = () => {
                     )                    
                 }
             </div>
-            <img src="/asset/icon/right-arrow.png" onClick={() => slideRight()} className="w-[35px] ml-2 cursor-pointer" alt="" />
+            <img src="/asset/icon/right-arrow.png" onClick={() => slideRight()} className="w-[35px] ml-2 cursor-pointer md:block hidden" alt="" />
             </div>
         </div>
     )
