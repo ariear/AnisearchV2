@@ -11,13 +11,14 @@ const MainSlide = () => {
     const [data,setData] = useState([])
 
     useEffect(() => {
-      axios.get('https://api.jikan.moe/v4/watch/promos/popular',{
-        params: {
-            _limit: 10
-        }
-       })
+      let wrap = []
+      axios.get('https://api.jikan.moe/v4/watch/promos/popular')
             .then(response => {
-                setData(response.data.data)
+              for (let i = 0; i < 8; i++) {
+                const element = response.data.data[i]
+                wrap.push(element) 
+              }
+                setData(wrap)
             })
     }, [])
     

@@ -1,10 +1,12 @@
+import { NavLink } from "react-router-dom"
+
 const Nav = () => {
     return (
-        <nav className="flex items-center justify-between text-white py-8 px-16">
+        <nav className="flex items-center justify-between text-white py-8 px-16 font-pupylinux">
             <p className="font-medium text-3xl">AniSearchV2</p>
             <div className="flex items-center text-lg">
-                <p className="mr-9">Home</p>
-                <p className="mr-9">Search Anime</p>
+                <p className="mr-9"><NavLink to='/' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Home</NavLink></p>
+                <p className="mr-9"><NavLink to='/animesearch' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Search Anime</NavLink></p>
                 <p className="mr-9">About Me</p>
                 <p>Contact Me</p>
             </div>
