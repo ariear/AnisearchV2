@@ -1,3 +1,4 @@
+import Footer from "../components/Footer"
 import LatestUpdateAnime from "../components/Home/LatestUpdateAnime"
 import MainSlide from "../components/Home/MainSlide"
 import SpringAnime from "../components/Home/SpringAnime"
@@ -8,10 +9,11 @@ const Home = () => {
         <div className="font-pupylinux bg-[#091945]">
             <Nav />
             <MainSlide />
-            <div className="container mx-auto pt-9">
+            <div className="container mx-auto pt-9 mb-20">
             <SpringAnime />
             <LatestUpdateAnime />
             </div>
+            <Footer />
         </div>
     )
 }
