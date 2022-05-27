@@ -6,17 +6,25 @@ import MainSlide from "../components/Home/MainSlide"
 const SearchAnime = () => {
     const [data,setData] = useState(null)
     const [notFound,setNotFound] = useState(false)
+    const [loading,setLoading] = useState(false)
 
     const searchAnime = async (input) => {
-        if (input.key === 'Enter') {            
+        if (input.key === 'Enter') {        
+            setLoading(true)
+            setData(null)    
             await axios.get(`https://api.jikan.moe/v4/anime?q=${input.target.value}`)
                 .then(response => {
+                    try {                        
                         setData(response.data.data)
+                        setLoading(false)
                         if (response.data.data.length === 0) {
                             setNotFound(true)
                         }else{
                             setNotFound(false)
                         }
+                    } catch (error) {
+                        setLoading(true)
+                    }
                 })
         }
     }
@@ -52,6 +60,10 @@ const SearchAnime = () => {
                     )
                 }
             </div>
+                {
+                    loading &&
+                    <img src="/asset/loading-circle.svg" width="50" className="mx-auto" alt="" />
+                }
                 {
                     notFound && 
                     <p className="text-white text-center text-lg">Anime Not Found</p>
