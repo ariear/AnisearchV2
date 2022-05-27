@@ -5,21 +5,18 @@ import MainSlide from "../components/Home/MainSlide"
 
 const SearchAnime = () => {
     const [data,setData] = useState(null)
-    const [loading,setLoading] = useState(false)
+    const [notFound,setNotFound] = useState(false)
 
-    const searchAnime = (input) => {
+    const searchAnime = async (input) => {
         if (input.key === 'Enter') {            
-            axios.get(`https://api.jikan.moe/v4/anime?q=${input.target.value}`)
+            await axios.get(`https://api.jikan.moe/v4/anime?q=${input.target.value}`)
                 .then(response => {
-                    setLoading(true)
-                    try {                        
-                        if (response.status === 200) {
-                            setData(response.data.data)
-                            setLoading(false)
+                        setData(response.data.data)
+                        if (response.data.data.length === 0) {
+                            setNotFound(true)
+                        }else{
+                            setNotFound(false)
                         }
-                    } catch (error) {
-                        setLoading(true)
-                    }
                 })
         }
     }
@@ -40,10 +37,8 @@ const SearchAnime = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-y-5 container mx-auto justify-items-center">
                 {   
-                    data && (
-                    loading
-                        ?   <p>Loading...</p>
-                        : data.map((e, index) => 
+                    data && 
+                    data.map((e, index) => 
                         <Link to={`/animedetail/${e.mal_id}`} key={index}>
                         <div className="bg-white w-[170px] mx-2 p-2 rounded-lg hover:scale-105 transition-all duration-300 relative group">
                         <img src={e.images.webp.large_image_url} className="rounded-lg border w-[170px] h-[220px]" alt="" />
@@ -55,9 +50,12 @@ const SearchAnime = () => {
                         </div>
                         </Link>
                     )
-                    )
                 }
             </div>
+                {
+                    notFound && 
+                    <p className="text-white text-center text-lg">Anime Not Found</p>
+                }
         </div>
     )
 }
