@@ -8,7 +8,7 @@ import SearchAnime from './views/SearchAnime';
 import NotFound from './views/NotFound';
 import Nav from './components/Nav';
 import DetailAnime from './views/DetailAnime';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,7 +20,7 @@ root.render(
     <Route path="/animesearch" element={<SearchAnime />} />
     <Route path="*" element={ <NotFound /> } />
   </Routes>
-  <Footer />
+  {/* <Footer /> */}
   </BrowserRouter>
 );
 
