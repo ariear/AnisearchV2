@@ -1,3 +1,4 @@
+import Footer from "../components/Footer"
 import LatestUpdateAnime from "../components/Home/LatestUpdateAnime"
 import MainSlide from "../components/Home/MainSlide"
 import SpringAnime from "../components/Home/SpringAnime"
@@ -16,6 +17,7 @@ const Home = () => {
             <UpcomingAnime />
             </div>
             </div>
+            <Footer />
         </div>
     )
 }

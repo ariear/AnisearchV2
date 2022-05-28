@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import Footer from "../components/Footer"
 
 const DetailAnime = () => {
     const param = useParams()
@@ -32,7 +33,7 @@ const DetailAnime = () => {
     }, [param])
     
     return (
-        <div className="py-28 font-pupylinux">
+        <div className="pt-28 font-pupylinux">
             <div className="h-[350px] bg-white bg-cover bg-center relative md:mb-0 mb-56" style={{ backgroundImage: `url('${data.bgmain}')` }}>
             <div className="absolute left-0 top-0 w-full h-full flex items-end bg-[#0000008a] md:pl-[16rem] lg:pl-[19rem] py-5">
                 <div className="md:flex hidden">
@@ -72,7 +73,7 @@ const DetailAnime = () => {
                 <p className="text-lg mb-2">Synopsis</p>
                 <p className="text-sm mb-7">{data.synopsis}</p>
                 </div>
-                <div className="lg:pl-60 md:px-0 px-5">
+                <div className="lg:pl-60 md:px-0 px-5 mb-16">
                 <p className="text-2xl mb-5">Characters & Voice Actors</p>
                 <div className="grid md:grid-cols-3 xl:grid-cols-4 md:gap-x-5 xl:gap-x-0 gap-y-6">
                     {
@@ -89,6 +90,7 @@ const DetailAnime = () => {
                 </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
