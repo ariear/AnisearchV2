@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import '../App.css'
+import Toggle from "./Nav/Toggle"
 
 const Nav = () => {
     const [isOpen , setIsOpen] = useState(false)
@@ -19,7 +20,7 @@ const Nav = () => {
                 <p>Contact Me</p>
             </div>
             <div className="flex items-center">
-                <img src="/asset/icon/toggle.png" className="mr-3" alt="" />
+                <Toggle />
                 <img src="/asset/icon/menu-genre.svg" onClick={() => setIsOpen(true)} className="block lg:hidden" alt="" />
                 <a href="https://github.com/arieakbarull/anisearchv2" className="lg:block hidden"><img src="/asset/icon/github.png" alt="" /></a>
             </div>
