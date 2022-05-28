@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MainSlide from "../components/Home/MainSlide"
 
@@ -8,8 +8,21 @@ const SearchAnime = () => {
     const [notFound,setNotFound] = useState(false)
     const [loading,setLoading] = useState(false)
 
+    const [genres,setGenres] = useState([])
+
+    useEffect(() => {
+      axios.get('https://api.jikan.moe/v4/genres/anime')
+            .then(response => {
+                setGenres(response.data.data)
+            })
+    }, [])
+    
+    
     const searchAnime = async (input) => {
-        if (input.key === 'Enter') {        
+        if (input.key === 'Enter') {
+             if (input.target.value === '') {
+                 return false
+             }        
             setLoading(true)
             setData(null)    
             await axios.get(`https://api.jikan.moe/v4/anime?q=${input.target.value}`)
@@ -29,6 +42,20 @@ const SearchAnime = () => {
         }
     }
 
+    const searchByGenre = async (input) => {
+        setLoading(true)
+        setData(null)    
+        await axios.get(`https://api.jikan.moe/v4/anime?q=${input.target.value}`)
+            .then(response => {
+                try {                        
+                    setData(response.data.data)
+                    setLoading(false)
+                } catch (error) {
+                    setLoading(true)
+                }
+            })
+    }
+
     return (
         <div className="font-pupylinux bg-[#091945] pt-20 pb-10 lg:pt-24">
             <MainSlide />
@@ -37,9 +64,16 @@ const SearchAnime = () => {
                     <img src="/asset/icon/search.svg" className="absolute left-2 bottom-0 top-0 w-[20px] m-auto" alt="" />
                     <input type="text" onKeyUp={(e) => searchAnime(e)} placeholder="Search title" className="bg-[#41568E] w-[190px] md:w-[240px] transition-all focus:outline-none focus:border-none focus:ring-white focus:ring-2 py-2 pl-9 text-white rounded-lg" id="search" />
                 </label>
-                <label htmlFor="genres" className="bg-[#4150794f] w-max p-3 rounded-lg text-white flex items-center">
-                    <p className="mr-3">Genres</p>
-                    <img src="/asset/icon/menu-genre.svg" alt="" />
+                <label htmlFor="genres" className="relative">
+                    <img src="/asset/icon/menu-genre.svg" className="absolute right-3 top-0 bottom-0 my-auto" alt="" />
+                    <select id="genres" onChange={(e) => searchByGenre(e)} className="bg-[#4150794f] w-[140px] md:w-[190px] cursor-pointer p-3 rounded-lg text-white flex items-center appearance-none">
+                            <option value="">Genres</option>
+                        {
+                            genres.map((e,index) => 
+                                <option value={e.mal_id} key={index} className="text-black">{e.name}</option>    
+                            )
+                        }
+                    </select>
                 </label>
             </div>
 
