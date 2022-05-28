@@ -16,8 +16,8 @@ const Nav = () => {
             <div className="lg:flex items-center hidden text-lg">
                 <p className="mr-9"><NavLink to='/' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Home</NavLink></p>
                 <p className="mr-9"><NavLink to='/animesearch' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Search Anime</NavLink></p>
-                <p className="mr-9">About Me</p>
-                <p>Contact Me</p>
+                <p className="mr-9"><NavLink to='/about' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >About</NavLink></p>
+                <p className="mr-9"><NavLink to='/contact' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''} >Contact</NavLink></p>
             </div>
             <div className="flex items-center">
                 <Toggle />
@@ -29,8 +29,8 @@ const Nav = () => {
                 <div className="text-center">
                     <p className="mb-4"><NavLink to='/' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''}>Home</NavLink></p>
                     <p className="mb-4"><NavLink to='/animesearch' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''}>Search Anime</NavLink></p>
-                    <p className="mb-4">About Me</p>
-                    <p>Contact Me</p>
+                    <p className="mb-4"><NavLink to='/about' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''}>About</NavLink></p>
+                    <p className="mb-4"><NavLink to='/contact' className={(e) => e.isActive ? 'text-[#ffffffbb]' : ''}>Contact</NavLink></p>
                 </div>
                 <a href="https://github.com/arieakbarull/anisearchv2" className="absolute bottom-4 right-4 block lg:hidden"><img src="/asset/icon/github.png" width="40" alt="" /></a>
             </div>
