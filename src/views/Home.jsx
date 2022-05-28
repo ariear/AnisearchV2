@@ -6,7 +6,7 @@ import UpcomingAnime from "../components/Home/UpcomingAnime"
 
 const Home = () => {
     return (
-        <div className="font-pupylinux bg-[#091945] pt-20 lg:pt-24">
+        <div className="font-pupylinux bg-[#091945] dark:bg-white transition-all duration-300 pt-20 lg:pt-24">
             <MainSlide />
             <div className="w-[95vw] xl:container mx-auto pt-9 mb-20">
             <div className="flex lg:flex-row flex-col">

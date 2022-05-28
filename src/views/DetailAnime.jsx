@@ -57,17 +57,17 @@ const DetailAnime = () => {
             </div>
             <div className="relative w-max px-4 lg:px-16 z-20 translate-y-44">
             <img src={data.img} className="rounded-lg mb-4 w-[180px] md:w-[225px]" alt="" />
-            <p className="text-white text-lg mb-2">Genres</p>
+            <p className="text-white dark:text-black text-lg mb-2">Genres</p>
             <div className="flex items-center flex-wrap w-[90vw] md:w-[225px]">
                 {
                     genre.map((e,index) => 
-                        <div className="bg-[#3B5089] text-white py-2 px-5 text-sm rounded-full w-max mb-2 mr-2" key={index}>{e.name}</div>
+                        <div className="bg-[#3B5089] dark:bg-transparent text-white dark:text-black dark:border dark:border-black py-2 px-5 text-sm rounded-full w-max mb-2 mr-2" key={index}>{e.name}</div>
                     )
                 }
             </div>
             </div>
             </div>
-            <div className="md:px-4 lg:px-16 text-white">
+            <div className="md:px-4 lg:px-16 text-white dark:text-black">
                 <div className="pl-5 pr-5 md:pl-60 md:pr-0 pt-5 mb-10">
                 <p className="font-medium text-3xl mb-6">{data.title}</p>
                 <p className="text-lg mb-2">Synopsis</p>
