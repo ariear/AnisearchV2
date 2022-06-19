@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 
 const MainSlide = () => {
     const [data,setData] = useState([])
+    const [loading,setLoading] = useState(false)
 
     useEffect(() => {
+      setLoading(true)
       let wrap = []
       axios.get('https://api.jikan.moe/v4/watch/promos/popular')
             .then(response => {
@@ -20,6 +22,7 @@ const MainSlide = () => {
                 wrap.push(element) 
               }
                 setData(wrap)
+                setLoading(false)
             })
     }, [])
     
@@ -41,18 +44,23 @@ const MainSlide = () => {
         className="w-full"
       >
         {
-            data.map((e,index) =>                
-                <SwiperSlide key={index}>
-                  <Link to={`/animedetail/${e.entry.mal_id}`} >
-                    <div className="w-full rounded-xl py-32 bg-center relative" style={{ backgroundImage: `url("${e.entry.images.jpg.large_image_url}")` }}>
-                        <div className="bg-[#0000007c] absolute left-0 top-0 w-full h-full text-white rounded-xl flex flex-col justify-end">
-                            <p className="font-medium text-lg md:text-xl ml-5 mb-2">The best anime in history</p>
-                            <p className="font-semibold text-2xl md:text-3xl ml-5 mb-6">{ e.entry.title }</p>
-                        </div>
+          loading ?
+        <SwiperSlide>
+        <div className="bg-white py-32 animate-pulse rounded-xl"></div>
+        </SwiperSlide>
+                :
+        data.map((e,index) =>                
+            <SwiperSlide key={index}>
+              <Link to={`/animedetail/${e.entry.mal_id}`} >
+                <div className="w-full rounded-xl py-32 bg-center relative" style={{ backgroundImage: `url("${e.entry.images.jpg.large_image_url}")` }}>
+                    <div className="bg-[#0000007c] absolute left-0 top-0 w-full h-full text-white rounded-xl flex flex-col justify-end">
+                        <p className="font-medium text-lg md:text-xl ml-5 mb-2">The best anime in history</p>
+                        <p className="font-semibold text-2xl md:text-3xl ml-5 mb-6">{ e.entry.title }</p>
                     </div>
-                  </Link>
-                </SwiperSlide>
-            )
+                </div>
+              </Link>
+            </SwiperSlide>
+        )
         }
       </Swiper>
         </div>

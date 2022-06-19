@@ -1,11 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import SkeletonCardUpcoming from "./SkeletonCardUpcoming";
 
 const UpcomingAnime = () => {
     const [data,setData] = useState([])
+    const [loading,setLoading] = useState(false)
 
     useEffect(() => {
+    setLoading(true)
       let wrap = []
       axios.get('https://api.jikan.moe/v4/seasons/upcoming')
             .then(response => {
@@ -14,6 +17,7 @@ const UpcomingAnime = () => {
                     wrap.push(element) 
                 }
                 setData(wrap)
+                setLoading(false)
             })
     }, [])
     
@@ -22,6 +26,13 @@ const UpcomingAnime = () => {
         <div className="bg-[#3955A3] grow rounded-xl lg:ml-3">
             <p className="text-white ml-4 mt-4 mb-6 text-lg">Top Upcoming Anime</p>
             {
+                loading ? 
+            <div>
+            <SkeletonCardUpcoming />
+            <SkeletonCardUpcoming />
+            <SkeletonCardUpcoming />
+            </div> 
+                    :                
                 data.map((e, index) =>    
                 <Link to={`/animedetail/${e.mal_id}`} key={index} >                 
             <div className="flex ml-4 mb-3">
